@@ -23,6 +23,13 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          print('Hola món...');
+        },
+      ),
     );
   }
 }
