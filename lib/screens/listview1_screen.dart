@@ -20,9 +20,6 @@ class Listview1Screen extends StatelessWidget {
                 ),
               )
               .toList(),
-          // ListTile(
-          //   title: Text('text'),
-          // ),
         ],
       ),
     );
