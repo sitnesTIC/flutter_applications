@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_applications/router/app_routes.dart';
+import 'package:flutter_applications/themes/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
             itemBuilder: (context, index) => ListTile(
                   leading: Icon(
                     menuOptions[index].icon,
-                    color: Colors.indigo,
+                    color: AppTheme.primary,
                   ),
                   title: Text(menuOptions[index].name),
                   onTap: () {
