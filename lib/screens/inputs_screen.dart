@@ -15,13 +15,30 @@ class InputsScreen extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                autofocus: true,
-                initialValue: 'Gerard',
-                textCapitalization: TextCapitalization.words,
-                onChanged: (value) {
-                  print('Valor: $value');
-                },
-              )
+                  autofocus: true,
+                  initialValue: '',
+                  textCapitalization: TextCapitalization.words,
+                  onChanged: (value) {
+                    print('Valor: $value');
+                  },
+                  validator: (value) {
+                    if (value == null) return 'Camp obligatori';
+                    return value.length < 3 ? 'Mínim de 3 lletres' : null;
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      hintText: 'Nom de l\'usuari',
+                      labelText: 'Nom',
+                      helperText: 'Només lletres',
+                      suffixIcon: Icon(Icons.group_outlined),
+                      icon: Icon(Icons.add_moderator_outlined),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ))))
             ],
           ),
         ),
