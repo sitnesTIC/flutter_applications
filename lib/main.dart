@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-// -> GS
+
 import 'package:flutter_applications/router/app_routes.dart';
 import 'package:flutter_applications/themes/app_theme.dart';
-// <- GS
 
 void main() => runApp(const MyApp());
 

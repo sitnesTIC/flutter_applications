@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-// -> GS
+
 import 'package:flutter_applications/models/models.dart';
 import 'package:flutter_applications/screens/screens.dart';
-// <- GS
 
 class AppRoutes {
   static const initialRoute = 'home';
@@ -31,7 +30,7 @@ class AppRoutes {
         icon: Icons.add_alert_outlined),
     MenuOption(
         route: 'card',
-        name: 'Tergetes - Cards',
+        name: 'Targetes - Cards',
         screen: const CardScreen(),
         icon: Icons.credit_card),
   ];
