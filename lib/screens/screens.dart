@@ -5,3 +5,4 @@ export 'package:flutter_applications/screens/card_screen.dart';
 export 'package:flutter_applications/screens/home_screen.dart';
 export 'package:flutter_applications/screens/listview1_screen.dart';
 export 'package:flutter_applications/screens/listview2_screen.dart';
+export 'package:flutter_applications/screens/animated_screen.dart';
