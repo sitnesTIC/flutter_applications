@@ -6,6 +6,7 @@ class HeadersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: HeaderCuadrado());
+    // return const Scaffold(body: HeaderCuadrado());
+    return const Scaffold(body: HeaderBordesRedondeados());
   }
 }
