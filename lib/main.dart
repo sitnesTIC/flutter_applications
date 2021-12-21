@@ -11,10 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: true,
-        title: 'Components App',
-        initialRoute: AppRoutes.initialRoute,
-        routes: AppRoutes.getAppRoutes(),
-        onGenerateRoute: AppRoutes.onGenerateRoute);
+      debugShowCheckedModeBanner: true,
+      title: 'Components App',
+      initialRoute: AppRoutes.initialRoute,
+      routes: AppRoutes.getAppRoutes(),
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      theme: ThemeData.light().copyWith(
+          primaryColor: Colors.indigo,
+          appBarTheme: AppBarTheme(
+            color: Colors.indigo,
+            elevation: 0,
+          )),
+    );
   }
 }
