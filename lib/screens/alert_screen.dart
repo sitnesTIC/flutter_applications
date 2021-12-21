@@ -1,9 +1,48 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
   const AlertScreen({Key? key}) : super(key: key);
 
-  void displayDialog(BuildContext context) {
+  void displayDialogIOS(BuildContext context) {
+    showCupertinoDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text('Títol'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Text(
+                    'cannot proud tie highest apart ourselves engine parts audience principle army'),
+                SizedBox(
+                  height: 10,
+                ),
+                FlutterLogo(
+                  size: 75,
+                )
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: Colors.red),
+                  )),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Ok'),
+              ),
+            ],
+          );
+        });
+  }
+
+  void displayDialogAndroid(BuildContext context) {
     showDialog(
         barrierDismissible: false,
         context: context,
@@ -29,7 +68,11 @@ class AlertScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: const Text('Cancel'),
-                )
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Ok'),
+                ),
               ],
             ));
   }
@@ -51,7 +94,9 @@ class AlertScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
           ),
-          onPressed: () => displayDialog(context),
+          onPressed: () => Platform.isAndroid
+              ? displayDialogAndroid(context)
+              : displayDialogIOS(context),
         ),
       ),
       floatingActionButton: FloatingActionButton(
