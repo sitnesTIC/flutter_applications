@@ -19,7 +19,33 @@ class InputsScreen extends StatelessWidget {
               CustomInputField(
                 labelText: 'Nom',
                 hintText: 'Nom de l\'usuari',
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Cognom',
+                hintText: 'Cognom de l\'usuari',
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Correu-e',
+                hintText: 'santeloi@santeloi.com',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              CustomInputField(
+                labelText: 'Contrasenya',
+                hintText: 'Clau de pas',
+                obscureText: true,
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),
