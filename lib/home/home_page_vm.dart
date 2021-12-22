@@ -1,0 +1,56 @@
+import 'package:rxdart/subjects.dart';
+
+import 'package:flutter_applications/mvvm/view_model.abs.dart';
+
+class HomePageState {
+  final int count;
+  final bool isMinusEnabled;
+  final bool isPlusEnabled;
+
+  HomePageState({
+    this.isMinusEnabled = false,
+    this.isPlusEnabled = true,
+    this.count = 0,
+  });
+
+  HomePageState copyWith({
+    bool? isMinusEnabled,
+    bool? isPlusEnabled,
+    int? count,
+  }) {
+    return HomePageState(
+      isMinusEnabled: isMinusEnabled ?? this.isMinusEnabled,
+      isPlusEnabled: isPlusEnabled ?? this.isPlusEnabled,
+      count: count ?? this.count,
+    );
+  }
+}
+
+class HomePageViewModel extends ViewModel {
+  final _stateSubject = BehaviorSubject<HomePageState>.seeded(HomePageState());
+  Stream<HomePageState> get state => _stateSubject;
+
+  void plusButtonTapped() {
+    _updateState(_stateSubject.value.count + 1);
+  }
+
+  void minusButtonTapped() {
+    _updateState(_stateSubject.value.count - 1);
+  }
+
+  void _updateState(int newCount) {
+    final state = _stateSubject.value;
+    _stateSubject.add(
+      state.copyWith(
+        count: newCount,
+        isPlusEnabled: newCount < 5,
+        isMinusEnabled: newCount > 0,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _stateSubject.close();
+  }
+}
