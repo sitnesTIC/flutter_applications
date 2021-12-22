@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_applications/home/home_page.dart';
 import 'package:flutter_applications/mvvm/view.abs.dart';
+import 'package:flutter_applications/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final _router = AppRouter();
+
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorObservers: [routeObserver],
-      home: HomePage(),
+      initialRoute: '/',
+      onGenerateRoute: _router.route,
     );
   }
 }
