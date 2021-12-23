@@ -7,6 +7,16 @@ class InputsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
+    final Map<String, String> formValues = {
+      'first_name': 'Gerard',
+      'last_name': 'Sentis',
+      'email': 'sitnes@andirra.ad',
+      'password': '123456',
+      'rol': 'Admin',
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inputs & Forms'),
@@ -14,39 +24,56 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: const [
-              CustomInputField(
-                labelText: 'Nom',
-                hintText: 'Nom de l\'usuari',
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              CustomInputField(
-                labelText: 'Cognom',
-                hintText: 'Cognom de l\'usuari',
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              CustomInputField(
-                labelText: 'Correu-e',
-                hintText: 'santeloi@santeloi.com',
-                keyboardType: TextInputType.emailAddress,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              CustomInputField(
-                labelText: 'Contrasenya',
-                hintText: 'Clau de pas',
-                obscureText: true,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-            ],
+          child: Form(
+            key: myFormKey,
+            child: Column(
+              children: [
+                const CustomInputField(
+                  labelText: 'Nom',
+                  hintText: 'Nom de l\'usuari',
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const CustomInputField(
+                  labelText: 'Cognom',
+                  hintText: 'Cognom de l\'usuari',
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const CustomInputField(
+                  labelText: 'Correu-e',
+                  hintText: 'santeloi@santeloi.com',
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const CustomInputField(
+                  labelText: 'Contrasenya',
+                  hintText: 'Clau de pas',
+                  obscureText: true,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ElevatedButton(
+                  child: const SizedBox(
+                      width: double.infinity,
+                      child: Center(child: Text('Guardar'))),
+                  onPressed: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    if (!myFormKey.currentState!.validate()) {
+                      print('Formulari no vàlid');
+                      return;
+                    }
+                    //* imprimir valores
+                    print(formValues);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
