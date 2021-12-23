@@ -68,6 +68,7 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
         child: Stack(
           children: [
             RefreshIndicator(
+              color: AppTheme.primary,
               onRefresh: onRefresh,
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
