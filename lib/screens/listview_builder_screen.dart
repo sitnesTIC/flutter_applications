@@ -36,7 +36,7 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
     isLoading = false;
     setState(() {});
 
-    if ((scrollController.position.pixels + 100) >=
+    if ((scrollController.position.pixels + 100) <=
         scrollController.position.maxScrollExtent) return;
     scrollController.animateTo((scrollController.position.pixels + 120),
         duration: const Duration(milliseconds: 300),
@@ -49,6 +49,14 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
     setState(() {});
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final lastId = imagesIds.last;
+    imagesIds.clear();
+    imagesIds.add(lastId + 1);
+    add5();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -59,19 +67,22 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
         removeBottom: true,
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemCount: imagesIds.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                    width: double.infinity,
-                    height: 300,
-                    fit: BoxFit.cover,
-                    placeholder: const AssetImage('assets/jar-loading.gif'),
-                    image: NetworkImage(
-                        'https://picsum.photos/500/300?image=${imagesIds[index]}'));
-              },
+            RefreshIndicator(
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: scrollController,
+                itemCount: imagesIds.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      image: NetworkImage(
+                          'https://picsum.photos/500/300?image=${imagesIds[index]}'));
+                },
+              ),
             ),
             if (isLoading)
               Positioned(
