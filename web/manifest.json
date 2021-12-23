@@ -1,6 +1,6 @@
 {
-    "name": "flutter_applications",
-    "short_name": "flutter_applications",
+    "name": "componentes_de_flutter",
+    "short_name": "componentes_de_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

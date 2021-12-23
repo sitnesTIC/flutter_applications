@@ -1,1 +1,1 @@
-export 'package:flutter_applications/models/menu_option.dart';
+export 'package:componentes_de_flutter/models/menu_option.dart';

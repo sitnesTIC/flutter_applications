@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_applications/themes/app_theme.dart';
+import 'package:componentes_de_flutter/themes/app_theme.dart';
 
 class SliderScreen extends StatefulWidget {
   const SliderScreen({Key? key}) : super(key: key);
