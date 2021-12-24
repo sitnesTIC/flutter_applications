@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_applications/widgets/widgets.dart';
+
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'Home';
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
+      drawer: const SideMenu(),
       body: const Center(
         child: Text('Home Screen'),
       ),
