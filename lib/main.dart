@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_applications/shared_preferences/preferences.dart';
+import 'package:provider/provider.dart';
 
+import 'package:flutter_applications/providers/theme_provider.dart';
+import 'package:flutter_applications/shared_preferences/preferences.dart';
 import 'package:flutter_applications/screens/screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Preferences.init();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(
+          create: (_) => ThemeProvider(isDarkmode: Preferences.isDarkmode))
+    ], child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,12 +25,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       title: 'Material App',
-      initialRoute: HomeScreen.routeName,
+      initialRoute: HomeScreen.routerName,
       routes: {
-        HomeScreen.routeName: (_) => const HomeScreen(),
-        SettingsScreen.routeName: (_) => const SettingsScreen(),
+        HomeScreen.routerName: (_) => const HomeScreen(),
+        SettingsScreen.routerName: (_) => const SettingsScreen(),
       },
-      theme: ThemeData.light(),
+      theme: Provider.of<ThemeProvider>(context).currentTheme,
     );
   }
 }

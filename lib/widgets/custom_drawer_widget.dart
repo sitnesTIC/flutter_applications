@@ -16,7 +16,7 @@ class SideMenu extends StatelessWidget {
             leading: const Icon(Icons.pages_outlined),
             title: const Text('Home'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+              Navigator.pushReplacementNamed(context, HomeScreen.routerName);
             },
           ),
           ListTile(
@@ -28,7 +28,8 @@ class SideMenu extends StatelessWidget {
             leading: const Icon(Icons.settings_outlined),
             title: const Text('Settings'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, SettingsScreen.routeName);
+              Navigator.pushReplacementNamed(
+                  context, SettingsScreen.routerName);
             },
           ),
         ],
