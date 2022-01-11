@@ -59,10 +59,27 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             BlocBuilder<CounterCubit, CounterState>(
               builder: (context, state) {
-                return Text(
-                  state.counterValue.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                );
+                if (state.counterValue < 0) {
+                  return Text(
+                    'BRR, NEGATIVE ' + state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                } else if (state.counterValue % 2 == 0) {
+                  return Text(
+                    'YAAY ' + state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                } else if (state.counterValue == 5) {
+                  return Text(
+                    'HMM, NUMBER ' + state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                } else {
+                  return Text(
+                    state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }
               },
             ),
             const SizedBox(
