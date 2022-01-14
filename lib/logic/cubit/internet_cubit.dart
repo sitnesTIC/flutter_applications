@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_applications/constants/enums.dart';
 import 'package:meta/meta.dart';
+
+import 'package:flutter_applications/constants/enums.dart';
 
 part 'internet_state.dart';
 
@@ -19,9 +20,9 @@ class InternetCubit extends Cubit<InternetState> {
     return connectivityStreamSubscription =
         connectivity.onConnectivityChanged.listen((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi) {
-        emitInternetConnected(ConnectionType.wifi);
+        emitInternetConnected(ConnectionType.Wifi);
       } else if (connectivityResult == ConnectivityResult.mobile) {
-        emitInternetConnected(ConnectionType.mobile);
+        emitInternetConnected(ConnectionType.Mobile);
       } else if (connectivityResult == ConnectivityResult.none) {
         emitInternetDisconnected();
       }
