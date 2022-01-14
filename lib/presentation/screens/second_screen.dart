@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_applications/logic/cubit/counter_cubit.dart';
 
 class SecondScreen extends StatefulWidget {
-  SecondScreen({Key? key, required this.title, required this.color})
+  const SecondScreen({Key? key, required this.title, required this.color})
       : super(key: key);
 
   final String title;
@@ -27,21 +27,21 @@ class _SecondScreenState extends State<SecondScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
             BlocConsumer<CounterCubit, CounterState>(
               listener: (context, state) {
                 if (state.wasIncremented == true) {
                   Scaffold.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Incremented!'),
                       duration: Duration(milliseconds: 300),
                     ),
                   );
                 } else if (state.wasIncremented == false) {
                   Scaffold.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Decremented!'),
                       duration: Duration(milliseconds: 300),
                     ),
@@ -64,27 +64,28 @@ class _SecondScreenState extends State<SecondScreen> {
                     'HMM, NUMBER 5',
                     style: Theme.of(context).textTheme.headline4,
                   );
-                } else
+                } else {
                   return Text(
                     state.counterValue.toString(),
                     style: Theme.of(context).textTheme.headline4,
                   );
+                }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FloatingActionButton(
-                  heroTag: Text('${widget.title}'),
+                  heroTag: Text(widget.title),
                   backgroundColor: widget.color,
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
                   tooltip: 'Decrement',
-                  child: Icon(Icons.remove),
+                  child: const Icon(Icons.remove),
                 ),
                 FloatingActionButton(
                   backgroundColor: widget.color,
@@ -93,16 +94,16 @@ class _SecondScreenState extends State<SecondScreen> {
                     BlocProvider.of<CounterCubit>(context).increment();
                   },
                   tooltip: 'Increment',
-                  child: Icon(Icons.add),
+                  child: const Icon(Icons.add),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             MaterialButton(
               color: Colors.greenAccent,
-              child: Text(
+              child: const Text(
                 'Go to Third Screen',
                 style: TextStyle(color: Colors.white),
               ),

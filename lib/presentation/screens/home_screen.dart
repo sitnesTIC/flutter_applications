@@ -6,7 +6,7 @@ import 'package:flutter_applications/logic/cubit/internet_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key, required this.title, required this.color})
+  const HomeScreen({Key? key, required this.title, required this.color})
       : super(key: key);
 
   final String title;
@@ -22,10 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocListener<InternetCubit, InternetState>(
       listener: (context, state) {
         if (state is InternetConnected &&
-            state.connectionType == ConnectionType.Wifi) {
+            state.connectionType == ConnectionType.wifi) {
           BlocProvider.of<CounterCubit>(context).increment();
         } else if (state is InternetConnected &&
-            state.connectionType == ConnectionType.Mobile) {
+            state.connectionType == ConnectionType.mobile) {
           BlocProvider.of<CounterCubit>(context).decrement();
         }
       },
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               BlocBuilder<InternetCubit, InternetState>(
                 builder: (context, state) {
                   if (state is InternetConnected &&
-                      state.connectionType == ConnectionType.Wifi) {
+                      state.connectionType == ConnectionType.wifi) {
                     return Text(
                       'Wi-Fi',
                       style: Theme.of(context).textTheme.headline3!.copyWith(
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     );
                   } else if (state is InternetConnected &&
-                      state.connectionType == ConnectionType.Mobile) {
+                      state.connectionType == ConnectionType.mobile) {
                     return Text(
                       'Mobile',
                       style: Theme.of(context).textTheme.headline3!.copyWith(
@@ -64,24 +64,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     );
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 },
               ),
-              Divider(
+              const Divider(
                 height: 5,
               ),
               BlocConsumer<CounterCubit, CounterState>(
                 listener: (context, state) {
                   if (state.wasIncremented == true) {
                     Scaffold.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Incremented!'),
                         duration: Duration(milliseconds: 300),
                       ),
                     );
                   } else if (state.wasIncremented == false) {
                     Scaffold.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Decremented!'),
                         duration: Duration(milliseconds: 300),
                       ),
@@ -104,11 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       'HMM, NUMBER 5',
                       style: Theme.of(context).textTheme.headline4,
                     );
-                  } else
+                  } else {
                     return Text(
                       state.counterValue.toString(),
                       style: Theme.of(context).textTheme.headline4,
                     );
+                  }
                 },
               ),
               // SizedBox(
@@ -137,12 +138,12 @@ class _HomeScreenState extends State<HomeScreen> {
               //     ),
               //   ],
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               MaterialButton(
                 color: Colors.redAccent,
-                child: Text(
+                child: const Text(
                   'Go to Second Screen',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -152,12 +153,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               MaterialButton(
                 color: Colors.greenAccent,
-                child: Text(
+                child: const Text(
                   'Go to Third Screen',
                   style: TextStyle(color: Colors.white),
                 ),
